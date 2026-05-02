@@ -7,7 +7,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
@@ -84,9 +83,8 @@ export function FAQsSection() {
                 >
                   {faq.question}
                 </span>
-                <ChevronDown className="w-5 h-5 text-gray-400 group-data-[state=open]:rotate-180 transition-transform duration-200 ml-4 flex-shrink-0" />
               </AccordionTrigger>
-              <AccordionContent className="pb-5 text-gray-500 leading-relaxed">
+              <AccordionContent className="pt-0 pb-5 text-gray-500 leading-relaxed">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

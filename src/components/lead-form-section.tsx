@@ -88,22 +88,29 @@ export function LeadFormSection() {
                   onValueChange={setImprovement}
                   className="grid grid-cols-1 sm:grid-cols-2 gap-4"
                 >
-                  {improvements.map((item) => (
-                    <div key={item.value}>
-                      <RadioGroupItem
-                        value={item.value}
-                        id={item.value}
-                        className="peer sr-only"
-                      />
-                      <Label
-                        htmlFor={item.value}
-                        className="flex flex-col p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 hover:border-emerald/30 has-[:checked]:border-emerald has-[:checked]:bg-emerald/5"
-                      >
-                        <span className="font-medium text-gray-900">{item.label}</span>
-                        <span className="text-sm text-gray-500 mt-1">{item.description}</span>
-                      </Label>
-                    </div>
-                  ))}
+                  {improvements.map((item) => {
+                    const isSelected = improvement === item.value;
+                    return (
+                      <div key={item.value}>
+                        <RadioGroupItem
+                          value={item.value}
+                          id={item.value}
+                          className="peer sr-only"
+                        />
+                        <Label
+                          htmlFor={item.value}
+                          className={`flex flex-col p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
+                            isSelected
+                              ? "border-emerald bg-emerald/5"
+                              : "border-gray-200 hover:border-emerald/30"
+                          }`}
+                        >
+                          <span className="font-medium text-gray-900">{item.label}</span>
+                          <span className="text-sm text-gray-500 mt-1">{item.description}</span>
+                        </Label>
+                      </div>
+                    );
+                  })}
                 </RadioGroup>
               </div>
 
@@ -117,22 +124,29 @@ export function LeadFormSection() {
                   onValueChange={setTimeline}
                   className="grid grid-cols-1 sm:grid-cols-2 gap-4"
                 >
-                  {timelines.map((item) => (
-                    <div key={item.value}>
-                      <RadioGroupItem
-                        value={item.value}
-                        id={item.value}
-                        className="peer sr-only"
-                      />
-                      <Label
-                        htmlFor={item.value}
-                        className="flex flex-col p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 hover:border-emerald/30 has-[:checked]:border-emerald has-[:checked]:bg-emerald/5"
-                      >
-                        <span className="font-medium text-gray-900">{item.label}</span>
-                        <span className="text-sm text-gray-500 mt-1">{item.description}</span>
-                      </Label>
-                    </div>
-                  ))}
+                  {timelines.map((item) => {
+                    const isSelected = timeline === item.value;
+                    return (
+                      <div key={item.value}>
+                        <RadioGroupItem
+                          value={item.value}
+                          id={item.value}
+                          className="peer sr-only"
+                        />
+                        <Label
+                          htmlFor={item.value}
+                          className={`flex flex-col p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
+                            isSelected
+                              ? "border-emerald bg-emerald/5"
+                              : "border-gray-200 hover:border-emerald/30"
+                          }`}
+                        >
+                          <span className="font-medium text-gray-900">{item.label}</span>
+                          <span className="text-sm text-gray-500 mt-1">{item.description}</span>
+                        </Label>
+                      </div>
+                    );
+                  })}
                 </RadioGroup>
               </div>
 

@@ -12,6 +12,29 @@ export function Hero() {
         backgroundSize: "32px 32px"
       }} />
 
+      {/* Subtle radial glow */}
+      <div className="absolute inset-0 opacity-40" style={{
+        background: `radial-gradient(ellipse at 70% 50%, oklch(0.42 0.11 170 / 0.08) 0%, transparent 60%)`
+      }} />
+
+      {/* Decorative smile SVG */}
+      <div className="absolute bottom-10 right-10 opacity-[0.06] pointer-events-none hidden lg:block">
+        <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Smile arc */}
+          <path d="M60 120C60 120 100 200 140 200C180 200 220 120 220 120" stroke="oklch(0.42 0.11 170)" strokeWidth="8" strokeLinecap="round"/>
+          {/* Teeth hints */}
+          <path d="M90 145L95 160" stroke="oklch(0.42 0.11 170)" strokeWidth="4" strokeLinecap="round"/>
+          <path d="M115 155L118 170" stroke="oklch(0.42 0.11 170)" strokeWidth="4" strokeLinecap="round"/>
+          <path d="M140 158L140 173" stroke="oklch(0.42 0.11 170)" strokeWidth="4" strokeLinecap="round"/>
+          <path d="M165 155L162 170" stroke="oklch(0.42 0.11 170)" strokeWidth="4" strokeLinecap="round"/>
+          <path d="M190 145L185 160" stroke="oklch(0.42 0.11 170)" strokeWidth="4" strokeLinecap="round"/>
+          {/* Sparkles */}
+          <circle cx="80" cy="80" r="3" fill="oklch(0.78 0.08 85)"/>
+          <circle cx="200" cy="90" r="2" fill="oklch(0.78 0.08 85)"/>
+          <circle cx="230" cy="160" r="2.5" fill="oklch(0.78 0.08 85)"/>
+        </svg>
+      </div>
+
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Badge */}
         <div className="animate-hero inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 mb-8">

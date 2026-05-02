@@ -12,8 +12,8 @@ export function Hero() {
         backgroundSize: "32px 32px"
       }} />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left: Content */}
           <div className="text-center lg:text-left">
             {/* Badge */}
@@ -94,13 +94,13 @@ export function Hero() {
           </div>
 
           {/* Right: Image */}
-          <div className="animate-hero animate-hero-delay-200 flex justify-center lg:justify-end">
+          <div className="animate-hero animate-hero-delay-200 flex justify-center">
             <div className="relative">
               {/* Decorative ring */}
               <div className="absolute -inset-4 rounded-full border-2 border-emerald/10" />
               
               {/* Image container */}
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl shadow-emerald/10">
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl shadow-emerald/10">
                 {/* Placeholder gradient - replace with real image */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald/20 via-gray-100 to-champagne/20" />
                 

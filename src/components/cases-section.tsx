@@ -31,22 +31,21 @@ const cases = [
 ];
 
 export function CasesSection() {
-  const ref = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("visible");
+          entry.target.classList.add("visible");
         }
       },
       { threshold: 0.1 }
     );
 
-    observer.observe(el);
+    if (headerRef.current) observer.observe(headerRef.current);
+    if (gridRef.current) observer.observe(gridRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -54,7 +53,7 @@ export function CasesSection() {
     <section id="casos" className="py-20 lg:py-28 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div ref={ref} className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-up" ref={headerRef}>
           <span className="text-emerald font-medium text-sm tracking-wide uppercase mb-4 block">
             Casos Reales
           </span>
@@ -71,7 +70,7 @@ export function CasesSection() {
         </div>
 
         {/* Cases grid */}
-        <div className="stagger-children grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div ref={gridRef} className="stagger-children grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {cases.map((caseItem, index) => (
             <Card
               key={index}

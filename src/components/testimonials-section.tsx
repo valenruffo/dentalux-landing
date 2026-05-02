@@ -40,22 +40,21 @@ const testimonials = [
 ];
 
 export function TestimonialsSection() {
-  const ref = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("visible");
+          entry.target.classList.add("visible");
         }
       },
       { threshold: 0.1 }
     );
 
-    observer.observe(el);
+    if (headerRef.current) observer.observe(headerRef.current);
+    if (gridRef.current) observer.observe(gridRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -63,7 +62,7 @@ export function TestimonialsSection() {
     <section className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div ref={ref} className="text-center mb-16">
+        <div ref={headerRef} className="text-center mb-16 animate-fade-up">
           <span className="text-emerald font-medium text-sm tracking-wide uppercase mb-4 block">
             Testimonios
           </span>
@@ -80,7 +79,7 @@ export function TestimonialsSection() {
         </div>
 
         {/* Testimonials grid */}
-        <div className="stagger-children grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div ref={gridRef} className="stagger-children grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}

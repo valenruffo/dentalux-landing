@@ -5,22 +5,25 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useRef } from "react";
 
 export function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const trustRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("visible");
+          entry.target.classList.add("visible");
         }
       },
       { threshold: 0.1 }
     );
 
-    observer.observe(el);
+    [badgeRef, titleRef, subtitleRef, ctaRef, trustRef].forEach((ref) => {
+      if (ref.current) observer.observe(ref.current);
+    });
     return () => observer.disconnect();
   }, []);
 
@@ -32,9 +35,9 @@ export function Hero() {
         backgroundSize: "32px 32px"
       }} />
 
-      <div ref={ref} className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Badge */}
-        <div className="transition-delay-0 animate-fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 mb-8">
+        <div ref={badgeRef} className="transition-delay-0 animate-fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 mb-8">
           <span className="flex gap-0.5">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-3.5 h-3.5 fill-[#C9A962] text-[#C9A962]" />
@@ -47,6 +50,7 @@ export function Hero() {
 
         {/* Title */}
         <h1
+          ref={titleRef}
           className="transition-delay-100 animate-fade-up font-semibold tracking-tight text-gray-900 mb-6"
           style={{
             fontFamily: "var(--font-montserrat)",
@@ -60,6 +64,7 @@ export function Hero() {
 
         {/* Subtitle */}
         <p
+          ref={subtitleRef}
           className="transition-delay-200 animate-fade-up text-gray-500 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
           style={{ fontFamily: "var(--font-inter)" }}
         >
@@ -68,7 +73,7 @@ export function Hero() {
         </p>
 
         {/* CTA */}
-        <div className="transition-delay-300 animate-fade-up flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div ref={ctaRef} className="transition-delay-300 animate-fade-up flex flex-col sm:flex-row items-center justify-center gap-4">
           <a href="#evaluacion">
             <Button className="bg-emerald hover:bg-emerald-dark text-white font-semibold px-8 py-3.5 rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl flex items-center gap-2">
               Quiero Evaluar mi Sonrisa
@@ -86,7 +91,7 @@ export function Hero() {
         </div>
 
         {/* Trust indicators */}
-        <div className="transition-delay-400 animate-fade-up mt-16 pt-10 border-t border-gray-100">
+        <div ref={trustRef} className="transition-delay-400 animate-fade-up mt-16 pt-10 border-t border-gray-100">
           <div className="flex flex-wrap items-center justify-center gap-8 text-gray-400 text-sm">
             <span className="flex items-center gap-2">
               <svg className="w-5 h-5 text-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

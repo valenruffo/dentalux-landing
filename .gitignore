@@ -1,6 +1,6 @@
 # Dependencies
 node_modules/
-.pnp/
+.pnp
 .pnp.js
 
 # Testing
@@ -9,6 +9,8 @@ coverage/
 # Next.js
 .next/
 out/
+
+# Production
 build/
 
 # Misc
